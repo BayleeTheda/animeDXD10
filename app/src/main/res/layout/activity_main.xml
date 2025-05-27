@@ -7,38 +7,69 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavbar"
-        android:layout_width="411dp"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_gravity="bottom"
-        android:background="#FF5100"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="672dp"
+        android:paddingEnd="30dp"
+        android:paddingStart="30dp"
         tools:ignore="MissingConstraints">
 
-        <Button
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:backgroundTint="#AF5100"
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="left"
-            android:layout_marginLeft="50dp">
-        </Button>
+            android:src="@drawable/ic_launcher_foreground">
+        </ImageButton>
 
-        <Button
-            android:id="@+id/homeButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:backgroundTint="#AF5100">
-        </Button>
-
-        <Button
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:backgroundTint="#AF5100"
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="right"
-            android:layout_marginRight="50dp">
-        </Button>
+            android:src="@drawable/ic_launcher_foreground">
+
+        </ImageButton>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_launcher_background">
+
+    </ImageView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#FF5100"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="left"
+            android:src="@drawable/ic_launcher_foreground"
+            ></ImageButton>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_launcher_foreground"
+            ></ImageButton>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:src="@drawable/ic_launcher_foreground"
+            ></ImageButton>
+
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>
