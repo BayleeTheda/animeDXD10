@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="smoky_black">#FF0A0903</color>
+    <color name="aerospace_orange">#FFFF5100</color>
+    <color name="ut_orange">#FFFF8200</color>
+    <color name="sunglow">#FFFFC929</color>
+    <color name="cornsilk">#FFFFF4D5</color>
 </resources>
