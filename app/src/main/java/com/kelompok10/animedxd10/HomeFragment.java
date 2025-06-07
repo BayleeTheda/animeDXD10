@@ -3,10 +3,18 @@ package com.kelompok10.animedxd10;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +67,19 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
+        ImageSlider imageSlider = rootView.findViewById(R.id.banner);
+        ArrayList<SlideModel> slideBanner = new ArrayList<>();
+
+        slideBanner.add(new SlideModel(R.drawable.banner_1, ScaleTypes.FIT));
+        slideBanner.add(new SlideModel(R.drawable.banner_2, ScaleTypes.FIT));
+        slideBanner.add(new SlideModel(R.drawable.banner_3, ScaleTypes.FIT));
+        slideBanner.add(new SlideModel(R.drawable.banner_4, ScaleTypes.FIT));
+        slideBanner.add(new SlideModel(R.drawable.banner_5, ScaleTypes.FIT));
+
+        imageSlider.setImageList(slideBanner, ScaleTypes.CENTER_CROP);
+
+        return rootView;
     }
 }

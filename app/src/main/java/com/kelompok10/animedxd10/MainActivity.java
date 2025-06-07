@@ -3,6 +3,8 @@ package com.kelompok10.animedxd10;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,12 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ActionBar actionBar = getSupportActionBar();
-
-        actionBar.setTitle("");
-        actionBar.setIcon(R.drawable.home_24dp_e3e3e3_fill0_wght400_grad0_opsz24);
-        actionBar.setDisplayUseLogoEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
+//        ImageView profile_button = findViewById(R.id.profile_dropdown);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
@@ -36,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment AboutFragment = new AboutFragment();
 
         setCurrentFragment(HomeFragment);
+        bottomNavigationView.setSelectedItemId(R.id.home);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             if(item.getItemId() == R.id.movie){
@@ -56,15 +54,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item){
-        if(item.getItemId() == R.id.menuDropdown){
-            Toast.makeText(this, "Menu dropdown clicked", Toast.LENGTH_SHORT).show();
-            return super.onOptionsItemSelected(item);
-        }
-        return true;
     }
 
     private void setCurrentFragment(Fragment fragment){
