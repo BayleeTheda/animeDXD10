@@ -15,6 +15,8 @@ import androidx.appcompat.view.menu.MenuAdapter;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.kelompok10.animedxd10.AnimeListFragment;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        Fragment MovieFragment = new MovieFragment();
+        Fragment AnimeListFragment = new AnimeListFragment();
         Fragment HomeFragment = new HomeFragment();
         Fragment AboutFragment = new AboutFragment();
 
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             if(item.getItemId() == R.id.movie){
-                setCurrentFragment(MovieFragment);
+                setCurrentFragment(AnimeListFragment);
                 return true;
             }else if(item.getItemId() == R.id.home){
                 setCurrentFragment(HomeFragment);
