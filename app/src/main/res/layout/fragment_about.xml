@@ -3,12 +3,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutFragment">
+    tools:context=".AboutFragment"
+    android:background="@drawable/background_about"
+    android:layout_marginTop="65dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Info fragment" />
+        android:layout_height="wrap_content"
+        android:background="#AF0A0903">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Welcome, John Doe"
+                android:textStyle="bold"
+                android:textColor="@color/cornsilk"
+                android:gravity="center_vertical"
+                android:paddingStart="25dp"
+                android:textSize="20sp"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/icon_app"
+                android:layout_marginBottom="50dp"/>
+            <TextView
+                android:id="@+id/about_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:textColor="@color/cornsilk"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="center_horizontal">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/instagram_icon"/>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/facebook_icon"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"/>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/x_icon"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/cornsilk"
+                android:gravity="center_horizontal"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="100dp"
+                android:text="Copyrights 2025 | AnimeDXD by Gerrr"/>
+        </LinearLayout>
+
+    </ScrollView>
 
 </FrameLayout>
