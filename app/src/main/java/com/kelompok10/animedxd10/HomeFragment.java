@@ -2,12 +2,14 @@ package com.kelompok10.animedxd10;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +18,10 @@ import android.view.ViewGroup;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.material.tabs.TabLayout;
 import com.kelompok10.animedxd10.adapter.MovieAdapter;
 import com.kelompok10.animedxd10.adapter.MoviePopAdapter;
+import com.kelompok10.animedxd10.adapter.ViewPagerHomeAdapter;
 import com.kelompok10.animedxd10.model.MovieCard;
 
 import java.lang.reflect.Array;
@@ -40,10 +44,9 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private List<MovieCard> movieRecomList = new ArrayList<>();
-    private List<MovieCard> moviePopList = new ArrayList<>();
-    private RecyclerView recyclerViewRecom;
-    private RecyclerView recyclerViewPop;
+    TabLayout tabLayoutHome;
+    ViewPager2 viewPagerHome;
+    ViewPagerHomeAdapter viewPagerHomeAdapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -70,10 +73,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -82,40 +81,35 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        ImageSlider imageSlider = view.findViewById(R.id.banner);
-        ArrayList<SlideModel> slideBanner = new ArrayList<>();
+        tabLayoutHome = view.findViewById(R.id.tab_home);
+        viewPagerHome = view.findViewById(R.id.view_pager_home);
+        viewPagerHomeAdapter = new ViewPagerHomeAdapter(this.getActivity());
+        viewPagerHome.setAdapter(viewPagerHomeAdapter);
 
-        slideBanner.add(new SlideModel(R.drawable.banner_1, ScaleTypes.FIT));
-        slideBanner.add(new SlideModel(R.drawable.banner_2, ScaleTypes.FIT));
-        slideBanner.add(new SlideModel(R.drawable.banner_3, ScaleTypes.FIT));
-        slideBanner.add(new SlideModel(R.drawable.banner_4, ScaleTypes.FIT));
-        slideBanner.add(new SlideModel(R.drawable.banner_5, ScaleTypes.FIT));
+        tabLayoutHome.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPagerHome.setCurrentItem(tab.getPosition());
+            }
 
-        imageSlider.setImageList(slideBanner, ScaleTypes.CENTER_CROP);
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
 
-        recyclerViewRecom = view.findViewById(R.id.recyclerRecom);
-        recyclerViewRecom.setHasFixedSize(true);
-        recyclerViewRecom.setLayoutManager(new LinearLayoutManager(this.getContext(), RecyclerView.HORIZONTAL, false));
-        recyclerViewRecom.setAdapter(new MovieAdapter(getContext(), movieRecomList));
+            }
 
-        movieRecomList.add(new MovieCard("Solo Leveling", "Lorem ipsum blablabla", getActivity().getDrawable(R.drawable.card_1)));
-        movieRecomList.add(new MovieCard("Attack on Titan", "Lorem ipsum blablabla", getActivity().getDrawable(R.drawable.card_2)));
-        movieRecomList.add(new MovieCard("Jujutsu Kaisen", "Lorem ipsum blebleble", getActivity().getDrawable(R.drawable.card_3)));
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
 
-        recyclerViewPop = view.findViewById(R.id.recyclerPopular);
-        recyclerViewPop.setLayoutManager(new GridLayoutManager(this.getContext(), 3));
-        recyclerViewPop.setAdapter(new MoviePopAdapter(this.getContext(), moviePopList));
+            }
+        });
 
-        moviePopList.add(new MovieCard("Solo Leveling", "Lorem ipsum blablabla", getActivity().getDrawable(R.drawable.card_1)));
-        moviePopList.add(new MovieCard("Attack on Titan", "Lorem ipsum blablabla", getActivity().getDrawable(R.drawable.card_2)));
-        moviePopList.add(new MovieCard("Jujutsu Kaisen", "Lorem ipsum blebleble", getActivity().getDrawable(R.drawable.card_3)));
-        moviePopList.add(new MovieCard("Demon Slayer", "Lorem ipsum blablabla", getActivity().getDrawable(R.drawable.card_4)));
-        moviePopList.add(new MovieCard("One Piece", "Lorem ipsum blablabla", getActivity().getDrawable(R.drawable.card_5)));
-        moviePopList.add(new MovieCard("Solo Leveling", "Lorem ipsum blablabla", getActivity().getDrawable(R.drawable.card_1)));
-        moviePopList.add(new MovieCard("Attack on Titan", "Lorem ipsum blablabla", getActivity().getDrawable(R.drawable.card_2)));
-        moviePopList.add(new MovieCard("Jujutsu Kaisen", "Lorem ipsum blebleble", getActivity().getDrawable(R.drawable.card_3)));
-        moviePopList.add(new MovieCard("Demon Slayer", "Lorem ipsum blablabla", getActivity().getDrawable(R.drawable.card_4)));
-        moviePopList.add(new MovieCard("One Piece", "Lorem ipsum blablabla", getActivity().getDrawable(R.drawable.card_5)));
+        viewPagerHome.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                tabLayoutHome.getTabAt(position).select();
+            }
+        });
 
         return view;
     }
