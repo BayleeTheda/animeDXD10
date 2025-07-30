@@ -1,5 +1,6 @@
 package com.kelompok10.animedxd10;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -24,6 +25,9 @@ public class AboutFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private String username;
+    private TextView usernameText;
 
     public AboutFragment() {
         // Required empty public constructor
@@ -54,6 +58,9 @@ public class AboutFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        Intent intent = getActivity().getIntent();
+        username = intent.getStringExtra("username");
     }
 
     @Override
@@ -61,6 +68,9 @@ public class AboutFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_about, container, false);
+        usernameText = view.findViewById(R.id.username);
+        usernameText.setText("Welcome, " + username);
+
 
         TextView about_desc = view.findViewById(R.id.about_desc);
         about_desc.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.\n" +
