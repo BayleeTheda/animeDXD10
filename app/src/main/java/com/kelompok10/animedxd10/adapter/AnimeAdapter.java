@@ -14,6 +14,11 @@ import com.kelompok10.animedxd10.model.Anime;
 
 import java.util.List;
 
+//new
+import android.os.Bundle;
+import androidx.fragment.app.FragmentActivity;
+import com.kelompok10.animedxd10.DetailPage;
+
 public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.AnimeViewHolder> {
 
     private List<Anime> animeList;

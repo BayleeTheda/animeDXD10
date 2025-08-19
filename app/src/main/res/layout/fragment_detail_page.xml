@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailPageFragment">
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:background="#FFF8E7">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Back Button -->
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_media_previous"
+                android:background="@android:color/transparent"
+                android:contentDescription="Back" />
+
+            <!-- Anime Cover -->
+            <ImageView
+                android:id="@+id/imgCover"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop" />
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anime Title"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:paddingTop="8dp" />
+
+            <!-- Genre -->
+            <TextView
+                android:id="@+id/tvGenre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anime Genre"
+                android:textSize="14sp"
+                android:paddingTop="4dp" />
+
+            <!-- Synopsis -->
+            <TextView
+                android:id="@+id/tvSynopsis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Anime synopsis here..."
+                android:textSize="14sp"
+                android:paddingTop="8dp" />
+
+            <!-- Review Button -->
+            <Button
+                android:id="@+id/btnReview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Review"
+                android:layout_gravity="center"
+                android:backgroundTint="@android:color/holo_orange_light"
+                android:layout_marginTop="16dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Review Popup tetap di atas konten -->
+    <RelativeLayout
+        android:id="@+id/reviewPopup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#88000000"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@android:color/white"
+            android:layout_centerInParent="true"
+            android:elevation="8dp">
+
+            <EditText
+                android:id="@+id/etReview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tulis review Anda di sini"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:gravity="top"/>
+
+            <TextView
+                android:id="@+id/tvError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Review tidak boleh kosong!"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone"
+                android:paddingTop="4dp"/>
+
+            <Button
+                android:id="@+id/btnSubmitReview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:layout_gravity="center"
+                android:backgroundTint="@android:color/holo_orange_light"
+                android:layout_marginTop="12dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

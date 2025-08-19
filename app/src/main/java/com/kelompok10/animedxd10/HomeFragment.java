@@ -1,116 +1,77 @@
-package com.kelompok10.animedxd10;
+package com.kelompok10.animedxd10.adapter;
 
 import android.os.Bundle;
-
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.constants.ScaleTypes;
-import com.denzcoskun.imageslider.models.SlideModel;
-import com.google.android.material.tabs.TabLayout;
-import com.kelompok10.animedxd10.adapter.MovieAdapter;
-import com.kelompok10.animedxd10.adapter.MoviePopAdapter;
-import com.kelompok10.animedxd10.adapter.ViewPagerHomeAdapter;
-import com.kelompok10.animedxd10.model.MovieCard;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import com.kelompok10.animedxd10.DetailPage;
+import com.kelompok10.animedxd10.R;
+import com.kelompok10.animedxd10.model.Anime;
+
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class HomeFragment extends Fragment {
+public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.AnimeViewHolder> {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private List<Anime> animeList;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    TabLayout tabLayoutHome;
-    ViewPager2 viewPagerHome;
-    ViewPagerHomeAdapter viewPagerHomeAdapter;
-
-    public HomeFragment() {
-        // Required empty public constructor
+    public AnimeAdapter(List<Anime> animeList) {
+        this.animeList = animeList;
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    @NonNull
+    @Override
+    public AnimeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_anime, parent, false);
+        return new AnimeViewHolder(view);
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onBindViewHolder(@NonNull AnimeViewHolder holder, int position) {
+        Anime anime = animeList.get(position);
+        holder.tvTitle.setText(anime.getTitle());
+        holder.tvGenre.setText(anime.getGenre());
+        holder.imgCover.setImageResource(anime.getImageResId());
+
+        holder.itemView.setOnClickListener(v -> {
+            // Kirim data ke DetailPage
+            Bundle bundle = new Bundle();
+            bundle.putString("title", anime.getTitle());
+            bundle.putString("genre", anime.getGenre());
+            bundle.putString("synopsis", anime.getSynopsis());
+            bundle.putInt("image", anime.getImageResId());
+
+            DetailPage detailPage = new DetailPage();
+            detailPage.setArguments(bundle);
+
+            ((FragmentActivity) v.getContext()).getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, detailPage)
+                    .addToBackStack(null)
+                    .commit();
+        });
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+    public int getItemCount() {
+        return animeList.size();
+    }
 
-        tabLayoutHome = view.findViewById(R.id.tab_home);
-        viewPagerHome = view.findViewById(R.id.view_pager_home);
-        viewPagerHomeAdapter = new ViewPagerHomeAdapter(this.getActivity());
-        viewPagerHome.setAdapter(viewPagerHomeAdapter);
+    static class AnimeViewHolder extends RecyclerView.ViewHolder {
+        TextView tvTitle, tvGenre;
+        ImageView imgCover;
 
-        tabLayoutHome.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPagerHome.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-        viewPagerHome.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                tabLayoutHome.getTabAt(position).select();
-            }
-        });
-
-        return view;
+        public AnimeViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvTitle = itemView.findViewById(R.id.tvAnimeTitle);
+            tvGenre = itemView.findViewById(R.id.tvAnimeGenre);
+            imgCover = itemView.findViewById(R.id.imgAnimeCover);
+        }
     }
 }

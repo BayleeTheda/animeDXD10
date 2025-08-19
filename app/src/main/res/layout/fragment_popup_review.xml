@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#88000000">
+
+    <!-- Area Popup -->
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@android:color/white"
+        android:layout_gravity="center"
+        android:elevation="8dp">
+
+        <!-- Header -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvPopupTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Review"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@android:color/holo_orange_dark"/>
+
+            <ImageButton
+                android:id="@+id/btnClose"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:background="@android:color/transparent"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="Close"/>
+        </RelativeLayout>
+
+        <!-- Input Review -->
+        <EditText
+            android:id="@+id/etReview"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:hint="Input your review"
+            android:inputType="textMultiLine"
+            android:gravity="top|start"
+            android:background="@android:drawable/edit_text"
+            android:padding="8dp"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Error Text -->
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Review tidak boleh kosong!"
+            android:textColor="@android:color/holo_red_light"
+            android:visibility="gone"
+            android:paddingTop="4dp"/>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:backgroundTint="@android:color/holo_orange_light"
+            android:layout_gravity="end"
+            android:layout_marginTop="12dp"/>
+    </LinearLayout>
+</FrameLayout>
