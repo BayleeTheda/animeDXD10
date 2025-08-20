@@ -1,5 +1,4 @@
-package com.example.yourapp;
-
+package com.kelompok10.animedxd10;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;

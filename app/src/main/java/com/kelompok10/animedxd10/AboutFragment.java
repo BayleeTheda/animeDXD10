@@ -73,11 +73,11 @@ public class AboutFragment extends Fragment {
 
 
         TextView about_desc = view.findViewById(R.id.about_desc);
-        about_desc.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.\n" +
+        about_desc.setText("AnimeDXD is a digital company focused on entertainment, especially in providing anime and manga content. Founded with the spirit of delivering the best experience for anime fans, AnimeDXD offers a modern, user-friendly platform with rich features.\n" +
                 "\n" +
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.\n" +
+                "Recognizing the growing global interest in anime, AnimeDXD is committed to delivering a complete service, from anime catalogs and the latest news to detailed information about popular titles. The application is designed so users can enjoy entertainment quickly, conveniently, and in an organized way.\n" +
                 "\n" +
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.");
+                "As a startup, AnimeDXD emphasizes technological innovation and user satisfaction. With a mission to strengthen the global anime community, AnimeDXD aims to become the leading platform that brings together watching, reading, and exploring the world of anime in one place.");
 
         return view;
     }

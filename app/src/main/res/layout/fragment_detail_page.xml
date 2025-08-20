@@ -5,55 +5,95 @@
     android:layout_height="match_parent"
     tools:context=".DetailPageFragment">
 
-    <!-- Scrollable Content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:background="#FFF8E7">
+        android:background="#FFF8E7"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="100dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_margin="16dp"
+            android:layout_marginTop="80dp">
 
-            <!-- Back Button -->
-            <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@android:drawable/ic_media_previous"
-                android:background="@android:color/transparent"
-                android:contentDescription="Back" />
-
-            <!-- Anime Cover -->
-            <ImageView
-                android:id="@+id/imgCover"
+            <!-- Bungkus poster dan back button dengan FrameLayout -->
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:scaleType="centerCrop" />
+                android:layout_height="480dp">
 
-            <!-- Title -->
+                <!-- Poster -->
+                <ImageView
+                    android:id="@+id/imgCover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    />
+
+                <!-- Back Button menimpa poster -->
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_margin="8dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/back_button"
+                    android:contentDescription="Back"
+                    />
+            </FrameLayout>
+
+
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Anime Title"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="27sp"
                 android:paddingTop="8dp" />
 
-            <!-- Genre -->
-            <TextView
-                android:id="@+id/tvGenre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Anime Genre"
-                android:textSize="14sp"
-                android:paddingTop="4dp" />
 
-            <!-- Synopsis -->
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/layoutGenres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_marginTop="4dp"
+                app:flexWrap="wrap"
+                app:justifyContent="flex_start"
+                app:alignItems="flex_start">
+
+                <!-- Genre 1 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="General List Top 1"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/bg_genre_orange"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:layout_margin="4dp"
+                    android:fontFamily="sans-serif-medium"/>
+
+                <!-- Genre 2 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comic Adaptation"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/bg_genre_blue"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:layout_margin="4dp"
+                    android:fontFamily="sans-serif-medium"/>
+            </com.google.android.flexbox.FlexboxLayout>
+
+
             <TextView
                 android:id="@+id/tvSynopsis"
                 android:layout_width="match_parent"
@@ -62,61 +102,22 @@
                 android:textSize="14sp"
                 android:paddingTop="8dp" />
 
-            <!-- Review Button -->
-            <Button
-                android:id="@+id/btnReview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Review"
-                android:layout_gravity="center"
-                android:backgroundTint="@android:color/holo_orange_light"
-                android:layout_marginTop="16dp"/>
-        </LinearLayout>
-    </ScrollView>
-
-    <!-- Review Popup tetap di atas konten -->
-    <RelativeLayout
-        android:id="@+id/reviewPopup"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#88000000"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:background="@android:color/white"
-            android:layout_centerInParent="true"
-            android:elevation="8dp">
-
-            <EditText
-                android:id="@+id/etReview"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tulis review Anda di sini"
-                android:inputType="textMultiLine"
-                android:minLines="3"
-                android:gravity="top"/>
+                android:layout_marginTop="70dp">
 
-            <TextView
-                android:id="@+id/tvError"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Review tidak boleh kosong!"
-                android:textColor="@android:color/holo_red_light"
-                android:visibility="gone"
-                android:paddingTop="4dp"/>
-
-            <Button
-                android:id="@+id/btnSubmitReview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Submit"
-                android:layout_gravity="center"
-                android:backgroundTint="@android:color/holo_orange_light"
-                android:layout_marginTop="12dp"/>
+                <Button
+                    android:id="@+id/btnReview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:backgroundTint="#FF8200"
+                    android:text="Review"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"/>
+            </FrameLayout>
         </LinearLayout>
-    </RelativeLayout>
+    </ScrollView>
 </FrameLayout>

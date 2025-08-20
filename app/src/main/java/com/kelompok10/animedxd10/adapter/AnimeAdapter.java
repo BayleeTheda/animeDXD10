@@ -17,7 +17,7 @@ import java.util.List;
 //new
 import android.os.Bundle;
 import androidx.fragment.app.FragmentActivity;
-import com.kelompok10.animedxd10.DetailPage;
+import com.kelompok10.animedxd10.DetailPageFragment;
 
 public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.AnimeViewHolder> {
 
@@ -41,7 +41,27 @@ public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.AnimeViewHol
         holder.genre.setText("Genre: " + anime.getGenre());
         holder.description.setText(anime.getDescription());
         holder.image.setImageResource(anime.getImageResId());
+
+        // ketika item di klik
+        holder.itemView.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("title", anime.getTitle());
+            bundle.putString("genre", anime.getGenre());
+            bundle.putString("synopsis", anime.getDescription());
+            bundle.putInt("image", anime.getImageResId());
+
+            DetailPageFragment detailFragment = new DetailPageFragment();
+            detailFragment.setArguments(bundle);
+
+            // ganti fragment
+            FragmentActivity activity = (FragmentActivity) v.getContext();
+            activity.getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.flFragment, detailFragment) // fragment_container = ID container di activity_main.xml
+                    .addToBackStack(null) // supaya bisa back
+                    .commit();
+        });
     }
+
 
     @Override
     public int getItemCount() {
